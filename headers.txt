@@ -1,0 +1,52 @@
+Expires : Wed, 30 Jan 2019 18:44:24 GMT
+	The Date and Time that the request is considered "stale" (outdated response) and should be refreshed
+
+Date : Wed, 30 Jan 2019 18:44:24 GMT
+	The Date and Time that the request was made
+	
+Cache-Control :
+	* private, 
+	* max-age = 0, 
+	* must-revalidate, 
+	* no-transform
+	
+	Settings related to caching. 
+		Private means response was intended for a single user, and may not be stored in a shared cache
+		max-age refers to the amount of time (in seconds) that the response data is considered "fresh". When max age is 0, the response should not be stored in the cache
+		must-revalidate means that if the response data has been cached, the request should be revalidated instead of pulled from the cache
+		no-transform means that no transformations or conversions should be made to the resource.
+		
+ETag : "IUREzboS_XZycecz4xfru1ipYfo/crUFEVV4stSFsmTcHB6Ff8SXXB8"
+	An itentifier for a specific version of the resource. It is used for web cache validation
+
+Vary : Origin
+	Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server.
+	Vary origin is considered the most efficient form of caching.
+	
+
+Vary : X-Origin
+	Used to add custom headers (generally proprietary)
+
+Content-Type : application/json; charset=UTF-8
+	content-type represents the formatting style of the response data. in this case, it was a JSON application using the UTF-8 encoded characters
+
+Content-Encoding : gzip
+	content-encoding specifies the type of encoding used on the data. In this case, gzip encoding was the encoding method.
+
+X-Content-Type-Options : nosniff
+	x-content-type-options can only receive the value of "nosniff" which prevents internet explorer from MIME sniffing the response
+
+X-Frame-Options : SAMEORIGIN
+	the sameorigin specifier for the x-frame-options header means that rendering will not be performed if there is a mismatch of request origins
+
+X-XSS-Protection : 1; mode=block
+	This header acts as a filter to help protect against Cross-Site Scripting (XSS) attacks. mode=block means that these attempted attacks are blocked (mode of handling the attack)
+
+Server : GSE
+	The name of the server from which the response was receive. For this case, the server name was GSE
+
+Alt-Svc : quic=":443"; ma=2592000; v="44,43,39"
+	"alt-svc" stands for "alternate services", and it represents an alternate network location (host or port) which the resources can be accessed using a different protocol
+
+Transfer-Encoding : chunked
+	The type of encoding used when transferring the response data to the user. In this cased, "chunked" encoding is used
